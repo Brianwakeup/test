@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stu.cms.mapper.QsCaseProjectMapper">
+    <insert id="insert" parameterType="QsCaseProject">
+        INSERT INTO qs_case_project (
+        ID, Stop_flag, Stop_Comment, Record_time, qs_case_sign, Project_date,
+        Project_name, name, project_state, Expert_Id_card
+        ) VALUES (
+        NULL, NULL, NULL, NOW(), NULL,
+        #{projectVo.Project_date}, #{projectVo.Project_name}, #{projectVo.name}, #{projectVo.project_state}, NULL
+        )
+    </insert>
+    <update id="update" parameterType="QsCaseProject">
+        UPDATE qs_case_project
+        SET
+        Stop_flag = #{Stop_flag},
+        Stop_Comment = #{Stop_Comment},
+        Record_time = #{Record_time},
+        qs_case_sign = #{qs_case_sign},
+        Project_date = #{Project_date},
+        Project_name = #{Project_name},
+        name = #{name},
+        project_state = #{project_state},
+        Expert_Id_card = #{Expert_Id_card}
+        WHERE ID = #{ID}
+    </update>
+    <delete id="delete" parameterType="string">
+        DELETE FROM qs_case_project
+        WHERE ID = #{ID}
+    </delete>
+
+    <select id="getAll" resultType="stu.cms.entity.QsCaseProject">
+        select * from qs_case_basic;
+    </select>
+    <select id="select" resultType="stu.cms.entity.QsCaseProject">
+        select * from qs_case_basic where id = #{id}
+    </select>
+    <select id="search" resultType="stu.cms.entity.QsCaseProject">
+        SELECT * FROM qs_case_project
+        <where>
+            <if test="projectName != null and projectName != ''">
+                AND Project_name LIKE CONCAT('%', #{projectName}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

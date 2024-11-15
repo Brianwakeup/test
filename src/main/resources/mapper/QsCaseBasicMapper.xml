@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stu.cms.mapper.QsCaseBasicMapper">
+
+    <insert id="insert" parameterType="QsCaseBasic">
+        INSERT INTO qs_case_basic (
+        ID, Parent_number, Project_name, Stop_flag, Stop_Comment, Record_time,
+        Organization_id, Organization, Only_id, mr_id, In_number, Patient_name,
+        Patient_Id_card, Birthday, in_time, out_time, standard_subject, Out_way,
+        Diag_code, Diagnoss, Ops_code, Operation, Cost
+        ) VALUES (
+        #{ID}, #{Parent_number}, #{Project_name}, #{Stop_flag}, #{Stop_Comment}, #{Record_time},
+        #{Organization_id}, #{Organization}, #{Only_id}, #{mr_id}, #{In_number}, #{Patient_name},
+        #{Patient_Id_card}, #{Birthday}, #{in_time}, #{out_time}, #{standard_subject}, #{Out_way},
+        #{Diag_code}, #{Diagnoss}, #{Ops_code}, #{Operation}, #{Cost}
+        )
+    </insert>
+
+</mapper>
